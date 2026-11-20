@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Squishtopia - Toko Mainan Squishy Lucu & Gemes</title>
   <meta name="description" content="Squishtopia - Siap bantu kamu kembalikan fokus di setiap saat dengan squishy empuk dan gemes!">
-  <!-- Deploy version 1.0.1 -->
+  <!-- Deploy version 1.0.4 -->
   <meta property="og:title" content="Squishtopia - Toko Squishy Lucu">
   <meta property="og:description" content="Beli aneka squishy lucu, slow rising, dan wangi dengan gratis ongkir!">
   <meta property="og:type" content="website">
@@ -37,9 +37,19 @@
 </head>
 <body>
   <iframe 
-    src="https://script.google.com/macros/s/AKfycbybwfCKgSoefRSST6BfhT1HrL2NBNRjUWu9DtXV3g77e_rYv4jDEbnjBOYa0DQh54f0OA/exec"
+    src="https://script.google.com/macros/s/AKfycbyNhvOQ3FNVTQxY6GtsI3hbHcIzJg5cGjgFRuAiKKum9OL7dpI49O3Inu5EjaCy14SVKA/exec"
     allow="clipboard-write; payment"
     title="Squishtopia Store">
   </iframe>
+  <script>
+    (function() {
+      var iframe = document.querySelector('iframe');
+      if (iframe && window.location.search) {
+        var baseSrc = iframe.getAttribute('src');
+        var separator = baseSrc.indexOf('?') !== -1 ? '&' : '?';
+        iframe.src = baseSrc + separator + window.location.search.substring(1);
+      }
+    })();
+  </script>
 </body>
 </html>
