@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Squishtopia - Toko Mainan Squishy Lucu & Gemes</title>
-  <meta name="description" content="Squishtopia - Siap bantu kamu kembalikan fokus di setiap saat dengan squishy empuk dan gemes!">
-  <!-- Deploy version 1.0.4 -->
-  <meta property="og:title" content="Squishtopia - Toko Squishy Lucu">
-  <meta property="og:description" content="Beli aneka squishy lucu, slow rising, dan wangi dengan gratis ongkir!">
+  <title>Squishtopia 🧸 - Toko Mainan Squishy Lucu & Gemes</title>
+  <meta name="description" content="Squishtopia - Siap bantu kamu kembalikan fokus di setiap saat dengan aneka squishy empuk, slow rising, dan wangi!">
+  <meta property="og:title" content="Squishtopia - Toko Squishy Terlengkap & Gemes">
+  <meta property="og:description" content="Temukan squishy empuk, slow rising, dan wangi pereda stres dengan gratis ongkir!">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧸</text></svg>">
+
   <!-- Google Tag Manager / Analytics -->
   <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5K8VVGB9"></script>
   <script>
@@ -17,31 +17,616 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
   </script>
+
   <!-- Vercel Web Analytics -->
   <script defer src="/_vercel/insights/script.js"></script>
+
+  <!-- Google Fonts: Baloo 2 & Nunito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    :root {
+      --pink: #ff6584;
+      --pink-dark: #e04b6c;
+      --pink-soft: #fff0f4;
+      --pink-glow: rgba(255, 101, 132, 0.28);
+      --purple: #705df2;
+      --purple-soft: #f2efff;
+      --mint: #38bdf8;
+      --mint-soft: #e0f2fe;
+      --yellow: #f59e0b;
+      --bg: #fff8fb;
+      --card-bg: #ffffff;
+      --ink: #201a33;
+      --ink-muted: #6b6480;
+      --border: #f1e4ec;
+      --radius: 20px;
+      --shadow-sm: 0 4px 14px rgba(40, 20, 60, 0.05);
+      --shadow-md: 0 10px 28px rgba(40, 20, 60, 0.08);
+      --shadow-hover: 0 16px 36px rgba(255, 101, 132, 0.22);
     }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background-color: #fff8fb;
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: 'Nunito', sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+      min-height: 100vh;
+      scroll-behavior: smooth;
     }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-      position: absolute;
+
+    h1, h2, h3, h4, .brand {
+      font-family: 'Baloo 2', cursive;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; border: none; cursor: pointer; outline: none; }
+    input, select, textarea { font-family: inherit; outline: none; }
+
+    /* Top Ticker Bar */
+    .top-ticker {
+      background: linear-gradient(90deg, #ff6584, #9078f8);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 16px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: 0.3px;
+    }
+    .top-ticker span { display: inline-flex; align-items: center; gap: 6px; }
+
+    /* Header Nav */
+    header {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      position: sticky;
       top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      z-index: 100;
+      border-bottom: 1.5px solid var(--border);
+      transition: all 0.3s ease;
     }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      font-size: 26px;
+      color: var(--pink);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      user-select: none;
+    }
+    .brand-icon {
+      font-size: 30px;
+      display: inline-block;
+      animation: squishWobble 3s infinite ease-in-out;
+      transform-origin: bottom center;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cart-btn {
+      background: var(--purple-soft);
+      color: var(--purple);
+      padding: 9px 16px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      transition: all 0.25s ease;
+    }
+    .cart-btn:hover {
+      background: var(--purple);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(112, 93, 242, 0.3);
+    }
+    .cart-badge {
+      background: var(--pink);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      border-radius: 999px;
+      padding: 2px 7px;
+      min-width: 18px;
+      text-align: center;
+    }
+
+    /* Hero Section with Interactive Squish */
+    .hero {
+      max-width: 1200px;
+      margin: 20px auto 40px;
+      padding: 0 20px;
+    }
+    .hero-banner {
+      background: radial-gradient(circle at top right, #ffd8e7 0%, #f1ebff 60%, #fff0f7 100%);
+      border: 2px solid #ffd4e5;
+      border-radius: 28px;
+      padding: 40px 32px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      align-items: center;
+      gap: 32px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(255, 101, 132, 0.1);
+    }
+    .hero-text h1 {
+      font-size: 42px;
+      color: #2b1f3d;
+      margin-bottom: 14px;
+      line-height: 1.15;
+    }
+    .hero-text h1 span {
+      background: linear-gradient(120deg, #ff4d79, #845ef7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-text p {
+      font-size: 16px;
+      color: var(--ink-muted);
+      margin-bottom: 24px;
+      max-width: 480px;
+      font-weight: 600;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-main {
+      background: var(--pink);
+      color: #fff;
+      padding: 13px 26px;
+      border-radius: 16px;
+      font-weight: 800;
+      font-size: 15px;
+      box-shadow: 0 8px 22px var(--pink-glow);
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-main:hover {
+      background: var(--pink-dark);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 28px rgba(255, 101, 132, 0.35);
+    }
+    .btn-sec {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--purple);
+      padding: 13px 22px;
+      border-radius: 16px;
+      font-weight: 800;
+      font-size: 15px;
+      border: 1.5px solid #dcd1ff;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-sec:hover {
+      background: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(112, 93, 242, 0.15);
+    }
+
+    /* Interactive Squishy Playground */
+    .hero-interactive {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.65);
+      border: 2px dashed #f2b5d4;
+      border-radius: 24px;
+      padding: 24px;
+      text-align: center;
+      user-select: none;
+      position: relative;
+    }
+    .interactive-label {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--pink-dark);
+      background: #ffe3ee;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .squishy-target {
+      width: 140px;
+      height: 140px;
+      border-radius: 35px;
+      background: linear-gradient(145deg, #ffd1e4, #ffaec9);
+      box-shadow: 0 14px 28px rgba(255, 105, 145, 0.35), inset 0 4px 10px rgba(255, 255, 255, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 72px;
+      cursor: pointer;
+      margin: 10px 0;
+      transition: transform 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform-origin: center bottom;
+    }
+    .squishy-target:active, .squishy-target.squished {
+      transform: scaleX(1.3) scaleY(0.7) translateY(18px) !important;
+      box-shadow: 0 6px 14px rgba(255, 105, 145, 0.25), inset 0 8px 16px rgba(0, 0, 0, 0.1) !important;
+    }
+    .squish-counter {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink-muted);
+      margin-top: 4px;
+    }
+    .squish-counter b { color: var(--pink); font-size: 15px; }
+
+    /* ========================================================
+       SWIPEABLE INTERACTIVE SHOWCASE (HOT PICKS CAROUSEL)
+       ======================================================== */
+    .section-wrap {
+      max-width: 1200px;
+      margin: 0 auto 48px;
+      padding: 0 20px;
+    }
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .section-title h2 {
+      font-size: 28px;
+      color: #2b1f3d;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title p {
+      font-size: 14px;
+      color: var(--ink-muted);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .carousel-arrows {
+      display: flex;
+      gap: 8px;
+    }
+    .arrow-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      color: var(--ink);
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+    }
+    .arrow-btn:hover {
+      background: var(--pink);
+      color: #fff;
+      border-color: var(--pink);
+      transform: scale(1.06);
+    }
+
+    /* Swipe Track */
+    .carousel-container {
+      position: relative;
+      margin: 0 -20px;
+      padding: 10px 20px 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      display: flex;
+      gap: 20px;
+      scrollbar-width: none;
+    }
+    .carousel-container::-webkit-scrollbar { display: none; }
+
+    .swipe-card {
+      flex: 0 0 310px;
+      scroll-snap-align: start;
+      background: #fff;
+      border-radius: 24px;
+      border: 2px solid #f6eaf2;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      cursor: pointer;
+    }
+    .swipe-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      border-color: #ffccd9;
+      box-shadow: var(--shadow-hover);
+    }
+    .swipe-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: linear-gradient(135deg, #ff4b72, #ff7a98);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 999px;
+      box-shadow: 0 4px 10px rgba(255, 75, 114, 0.4);
+      z-index: 2;
+    }
+    .swipe-img-box {
+      height: 220px;
+      background: radial-gradient(circle, #fff3f7 30%, #fce9f1 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .swipe-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .swipe-card:hover .swipe-img-box img {
+      transform: scale(1.08);
+    }
+    .swipe-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+    .item-cat {
+      font-size: 12px;
+      color: var(--purple);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .item-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: #241c33;
+    }
+    .item-desc {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    .item-bottom {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 10px;
+      border-top: 1px solid #f9eff5;
+    }
+    .item-price {
+      font-family: 'Baloo 2', cursive;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--pink-dark);
+    }
+    .quick-add-btn {
+      background: var(--purple);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 13px;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .quick-add-btn:hover {
+      background: #5d48e0;
+      transform: scale(1.05);
+    }
+
+    /* Dots indicator for swipe */
+    .swipe-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .swipe-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #e9d9e4;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .swipe-dot.active {
+      width: 26px;
+      background: var(--pink);
+    }
+
+    /* ========================================================
+       GRID KATALOG LENGKAP
+       ======================================================== */
+    .filter-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .category-pills {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .cat-pill {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 800;
+      padding: 9px 18px;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: var(--shadow-sm);
+    }
+    .cat-pill:hover, .cat-pill.active {
+      background: var(--pink);
+      color: #fff;
+      border-color: var(--pink);
+      box-shadow: 0 6px 18px var(--pink-glow);
+      transform: translateY(-2px);
+    }
+
+    .search-box {
+      flex: 1;
+      max-width: 320px;
+      min-width: 200px;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      padding: 10px 18px 10px 40px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      transition: all 0.25s ease;
+    }
+    .search-input:focus {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 3px rgba(112, 93, 242, 0.15);
+    }
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--ink-muted);
+      font-size: 15px;
+      pointer-events: none;
+    }
+
+    /* Catalog Grid */
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .grid-card {
+      background: #fff;
+      border-radius: 22px;
+      border: 1.5px solid var(--border);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.28s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .grid-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: #ffd6e4;
+    }
+    .grid-img-wrap {
+      height: 190px;
+      background: radial-gradient(circle, #fff7fb 0%, #fdeff6 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .grid-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .grid-card:hover .grid-img-wrap img {
+      transform: scale(1.07);
+    }
+    .stock-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(4px);
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      color: #10b981;
+      border: 1px solid #d1fae5;
+    }
+    .stock-badge.low {
+      color: #f59e0b;
+      border-color: #fef3c7;
+    }
+    .grid-card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+    .grid-card-body h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: #241c33;
+      cursor: pointer;
+    }
+    .grid-card-body h3:hover { color: var(--pink); }
+
     /* Floating WhatsApp Button */
     .wa-float {
       position: fixed;
@@ -54,10 +639,9 @@
       align-items: center;
       gap: 8px;
       padding: 11px 18px 11px 14px;
-      box-shadow: 0 4px 18px rgba(37, 211, 102, 0.5);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
       text-decoration: none;
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 14px;
       z-index: 999999;
       transition: all 0.25s ease;
@@ -66,22 +650,375 @@
     .wa-float:hover {
       background: #1eb855;
       transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.7);
+      box-shadow: 0 8px 26px rgba(37, 211, 102, 0.65);
       color: #ffffff !important;
     }
-    .wa-icon {
-      width: 24px;
-      height: 24px;
-      flex-shrink: 0;
+    .wa-icon { width: 24px; height: 24px; flex-shrink: 0; }
+
+    /* Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(20, 10, 30, 0.55);
+      backdrop-filter: blur(6px);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.active { display: flex; animation: fadeIn 0.25s ease; }
+    .modal-box {
+      background: #fff;
+      border-radius: 28px;
+      max-width: 520px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 28px;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+      animation: modalSlideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    }
+    .close-btn {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #f4eff5;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--ink-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .close-btn:hover { background: var(--pink); color: #fff; }
+
+    /* Slide Cart Drawer */
+    .drawer-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(20, 10, 30, 0.4);
+      z-index: 9998;
+      display: none;
+    }
+    .drawer-overlay.active { display: block; }
+    .cart-drawer {
+      position: fixed;
+      top: 0; right: -420px;
+      width: 100%;
+      max-width: 420px;
+      height: 100%;
+      background: #fff;
+      z-index: 9999;
+      box-shadow: -8px 0 30px rgba(0,0,0,0.15);
+      transition: right 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .cart-drawer.active { right: 0; }
+    .drawer-head {
+      padding: 20px 24px;
+      border-bottom: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .drawer-footer {
+      padding: 20px 24px;
+      border-top: 1.5px solid var(--border);
+      background: #fffcfd;
+    }
+
+    /* Cart Item Row */
+    .cart-item {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #f6edf3;
+    }
+    .cart-item-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      object-fit: cover;
+      background: #ffedf4;
+    }
+    .cart-item-info { flex: 1; }
+    .cart-item-name { font-weight: 800; font-size: 14px; }
+    .cart-item-price { font-weight: 800; color: var(--pink-dark); font-size: 14px; }
+    .cart-qty-ctrl {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f2eff8;
+      border-radius: 8px;
+      padding: 2px 6px;
+    }
+    .cart-qty-ctrl button {
+      background: none;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--purple);
+      padding: 2px 6px;
+    }
+
+    /* Floating Toast */
+    #toast {
+      position: fixed;
+      bottom: 84px;
+      left: 50%;
+      transform: translateX(-50%) translateY(30px);
+      background: #251d38;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      z-index: 100000;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Keyframes */
+    @keyframes squishWobble {
+      0%, 100% { transform: scale(1, 1); }
+      30% { transform: scale(1.15, 0.85); }
+      50% { transform: scale(0.9, 1.1); }
+      70% { transform: scale(1.05, 0.95); }
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes modalSlideUp { from { transform: translateY(40px) scale(0.95); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+      .hero-banner { grid-template-columns: 1fr; padding: 28px 20px; }
+      .hero-text h1 { font-size: 32px; }
+      .swipe-card { flex: 0 0 260px; }
+      .swipe-img-box { height: 180px; }
+      .catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .grid-img-wrap { height: 140px; }
+      .grid-card-body h3 { font-size: 14px; }
+      .wa-float span { display: none; }
+      .wa-float { padding: 12px; border-radius: 50%; }
     }
   </style>
 </head>
 <body>
-  <iframe 
-    src="https://script.google.com/macros/s/AKfycbyNhvOQ3FNVTQxY6GtsI3hbHcIzJg5cGjgFRuAiKKum9OL7dpI49O3Inu5EjaCy14SVKA/exec"
-    allow="clipboard-write; payment"
-    title="Squishtopia Store">
-  </iframe>
+
+  <!-- Top Ticker Bar -->
+  <div class="top-ticker">
+    <span>✨ Toko Squishy Terlengkap & Tergemoy</span>
+    <span>•</span>
+    <span>🚚 Gratis Ongkir Min. Belanja Rp 150rb!</span>
+    <span>•</span>
+    <span>📲 Order Langsung via WhatsApp</span>
+  </div>
+
+  <!-- Header Nav -->
+  <header>
+    <div class="nav-container">
+      <div class="brand" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        <span class="brand-icon">🧸</span>
+        <span>Squishtopia</span>
+      </div>
+      <div class="header-actions">
+        <button class="cart-btn" onclick="openCart()">
+          <span>🛒 Keranjang</span>
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with Interactive Squishy Easter Egg -->
+  <section class="hero">
+    <div class="hero-banner">
+      <div class="hero-text">
+        <h1>Squishy Empuk, Bikin <span>Tenang & Gemes!</span> ✨</h1>
+        <p>Solusi pereda stres nomor satu! Super slow-rising, aroma wangi manis, dan tekstur empuk yang bikin kamu ga bisa berhenti mencet.</p>
+        <div class="hero-cta">
+          <a href="#katalog" class="btn-main">Katalog Produk 👇</a>
+          <a href="https://wa.me/6287780327452?text=Halo%20Admin%20Squishtopia!%20%F0%9F%A7%B8%20Mau%20tanya-tanya%20produk%20squishy%20dong..." target="_blank" class="btn-sec">💬 Tanya Admin</a>
+        </div>
+      </div>
+      <div class="hero-interactive">
+        <div class="interactive-label">✨ Simulator Squishy</div>
+        <div class="squishy-target" id="squishToy" onclick="squishAction()">🧸</div>
+        <p style="font-size:13px; font-weight:800; color:var(--ink);">Coba klik / pencet boneka di atas!</p>
+        <div class="squish-counter">Total Dipencet: <b id="squishCount">0</b>x</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SWIPEABLE INTERACTIVE SHOWCASE (PILIHAN ITEM / HOT PICKS)
+       ======================================================== -->
+  <section class="section-wrap">
+    <div class="section-header">
+      <div class="section-title">
+        <h2>🔥 Pilihan Favorit (Swipe Geser)</h2>
+        <p>Geser ke kanan / kiri untuk melihat squishy paling dicari minggu ini!</p>
+      </div>
+      <div class="carousel-arrows">
+        <button class="arrow-btn" onclick="scrollCarousel(-1)">‹</button>
+        <button class="arrow-btn" onclick="scrollCarousel(1)">›</button>
+      </div>
+    </div>
+
+    <!-- Swipeable Track -->
+    <div class="carousel-container" id="featuredCarousel">
+      <!-- Cards rendered dynamically by JS -->
+    </div>
+
+    <!-- Swipe Dots Indicator -->
+    <div class="swipe-dots" id="carouselDots">
+      <!-- Dots rendered dynamically -->
+    </div>
+  </section>
+
+  <!-- ========================================================
+       KATALOG PRODUK LENGKAP (GRID)
+       ======================================================== -->
+  <section class="section-wrap" id="katalog">
+    <div class="section-header">
+      <div class="section-title">
+        <h2>📦 Semua Koleksi Squishtopia</h2>
+        <p>Pilih kategori atau cari squishy favoritmu di bawah ini:</p>
+      </div>
+    </div>
+
+    <!-- Filter & Search Toolbar -->
+    <div class="filter-toolbar">
+      <div class="category-pills" id="categoryTabs">
+        <button class="cat-pill active" onclick="filterCategory('Semua', this)">✨ Semua</button>
+        <button class="cat-pill" onclick="filterCategory('Marshmallow', this)">🧀 Marshmallow</button>
+        <button class="cat-pill" onclick="filterCategory('Coconut Oil', this)">🥥 Coconut Oil</button>
+        <button class="cat-pill" onclick="filterCategory('Butter', this)">🧈 Butter</button>
+      </div>
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" class="search-input" id="searchInput" placeholder="Cari squishy impianmu..." oninput="handleSearch(this.value)">
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="catalog-grid" id="catalogGrid">
+      <!-- Grid items rendered dynamically by JS -->
+    </div>
+  </section>
+
+  <!-- ========================================================
+       MODAL: DETAIL PRODUK
+       ======================================================== -->
+  <div class="modal-overlay" id="productModal" onclick="closeProductModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button class="close-btn" onclick="closeProductModal()">✕</button>
+      <div id="modalProductContent">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       DRAWER: KERANJANG BELANJA
+       ======================================================== -->
+  <div class="drawer-overlay" id="drawerOverlay" onclick="closeCart()"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="drawer-head">
+      <h3>🧺 Keranjang Belanja</h3>
+      <button class="close-btn" onclick="closeCart()">✕</button>
+    </div>
+    <div class="drawer-body" id="cartItemsList">
+      <!-- Cart items -->
+    </div>
+    <div class="drawer-footer">
+      <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-weight:800;">
+        <span>Total Belanja:</span>
+        <span style="color:var(--pink-dark); font-size:18px;" id="cartTotalText">Rp 0</span>
+      </div>
+      <button class="btn-main" style="width:100%; justify-content:center;" onclick="openCheckoutModal()">
+        Lanjut ke Pembayaran 💳
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       MODAL: CHECKOUT & PEMBAYARAN
+       ======================================================== -->
+  <div class="modal-overlay" id="checkoutModal" onclick="closeCheckoutModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button class="close-btn" onclick="closeCheckoutModal()">✕</button>
+      <h3 style="margin-bottom:16px; color:#2b1f3d;">🛍️ Rincian Pesanan & Pembayaran</h3>
+
+      <form id="checkoutForm" onsubmit="handleCheckoutSubmit(event)">
+        <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:18px;">
+          <div>
+            <label style="font-size:13px; font-weight:800; display:block; margin-bottom:4px;">Nama Lengkap</label>
+            <input type="text" id="coNama" required placeholder="Contoh: Sarah Azka" style="width:100%; padding:10px 14px; border:1.5px solid var(--border); border-radius:12px;">
+          </div>
+          <div>
+            <label style="font-size:13px; font-weight:800; display:block; margin-bottom:4px;">Nomor WhatsApp</label>
+            <input type="tel" id="coHp" required placeholder="Contoh: 081234567890" style="width:100%; padding:10px 14px; border:1.5px solid var(--border); border-radius:12px;">
+          </div>
+          <div>
+            <label style="font-size:13px; font-weight:800; display:block; margin-bottom:4px;">Alamat Pengiriman</label>
+            <textarea id="coAlamat" required rows="2" placeholder="Nama jalan, nomor rumah, kecamatan, kota..." style="width:100%; padding:10px 14px; border:1.5px solid var(--border); border-radius:12px;"></textarea>
+          </div>
+          <div>
+            <label style="font-size:13px; font-weight:800; display:block; margin-bottom:4px;">Metode Pembayaran</label>
+            <select id="coPayment" style="width:100%; padding:10px 14px; border:1.5px solid var(--border); border-radius:12px; font-weight:700;">
+              <option value="QRIS (Semua E-Wallet & Bank)">📲 QRIS (GoPay, OVO, DANA, BCA)</option>
+              <option value="Transfer Bank BCA (5211878305 a.n Squishtopia)">🏦 Transfer Bank BCA</option>
+              <option value="DANA (087780327452 a.n Squishtopia)">💳 DANA</option>
+              <option value="COD (Bayar di Tempat)">💵 COD (Bayar Saat Barang Sampai)</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="background:#fff4f7; padding:14px; border-radius:14px; margin-bottom:16px;">
+          <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:700; margin-bottom:4px;">
+            <span>Subtotal Produk:</span>
+            <span id="coSubtotal">Rp 0</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:700; margin-bottom:4px;">
+            <span>Ongkos Kirim (Flat):</span>
+            <span id="coOngkir">Rp 12.000</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:16px; font-weight:900; color:var(--pink-dark); border-top:1px dashed #f2ccd8; padding-top:6px; margin-top:6px;">
+            <span>Total Pembayaran:</span>
+            <span id="coGrandTotal">Rp 0</span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-main" style="width:100%; justify-content:center; background:#25D366;">
+          📲 Kirim Pesanan via WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Floating Toast -->
+  <div id="toast">✨ Ditambahkan ke keranjang!</div>
 
   <!-- Tombol WhatsApp Mengambang -->
   <a href="https://wa.me/6287780327452?text=Halo%20Admin%20Squishtopia!%20%F0%9F%A7%B8%20Saya%20mau%20tanya-tanya%20seputar%20produk%20squishy%20dong..." 
@@ -94,15 +1031,525 @@
     </svg>
     <span>Chat Kami</span>
   </a>
+
+  <!-- ========================================================
+       APPLICATION LOGIC
+       ======================================================== -->
   <script>
-    (function() {
-      var iframe = document.querySelector('iframe');
-      if (iframe && window.location.search) {
-        var baseSrc = iframe.getAttribute('src');
-        var separator = baseSrc.indexOf('?') !== -1 ? '&' : '?';
-        iframe.src = baseSrc + separator + window.location.search.substring(1);
+    // Initial Verified Products Catalog (Fast instant load with real Google Drive images converted to direct CDN)
+    let products = [
+      {
+        id: "SQ001",
+        name: "Cheese Marshmallow Vaseline",
+        category: "Marshmallow",
+        price: 25000,
+        stock: 28,
+        image: "https://lh3.googleusercontent.com/d/1PrsgRRQIAvEqkE5Z7LADLXA2MN8XPfm1",
+        desc: "Squishy keju super empuk dengan sensasi kenyal vaseline. Ukuran 8x8 cm, wangi harum manis!",
+        badge: "🔥 Best Seller"
+      },
+      {
+        id: "SQ002",
+        name: "Cheese Marshmallow Crunchy",
+        category: "Marshmallow",
+        price: 25000,
+        stock: 24,
+        image: "https://lh3.googleusercontent.com/d/1QXW1RlyxmLeo_arEcH2Xh7hOMqk957SJ",
+        desc: "Squishy keju dengan suara kresek crunchy memuaskan. Ukuran 8x8 cm, anti-stres terampuh!",
+        badge: "✨ Viral TikTok"
+      },
+      {
+        id: "SQ003",
+        name: "Clear Coconut Oil",
+        category: "Coconut Oil",
+        price: 35000,
+        stock: 40,
+        image: "https://lh3.googleusercontent.com/d/135NlN30S8P8TwpAmdhCxzHhlC7WGjsIo",
+        desc: "Squishy bola wangi licin transparan dengan aroma kelapa tropis menyegarkan. Ukuran 7 cm.",
+        badge: "👑 Favorit"
+      },
+      {
+        id: "SQ004",
+        name: "Metallic Coconut Oil",
+        category: "Coconut Oil",
+        price: 35000,
+        stock: 19,
+        image: "https://lh3.googleusercontent.com/d/1eCfn7xlbb6nY9iFwoEjGridhuyhL21Ea",
+        desc: "Squishy bola wangi licin metalik berkilau. Tekstur kenyal memantul sempurna, ukuran 7 cm.",
+        badge: "⚡ Terbatas"
+      },
+      {
+        id: "SQ005",
+        name: "Butter Vaseline",
+        category: "Butter",
+        price: 20000,
+        stock: 15,
+        image: "https://lh3.googleusercontent.com/d/1uz1-afBD6yBH9z2EMAs77LLCepQ_bn1n",
+        desc: "Squishy berbentuk balok mentega mentah yang super lembut dan adem saat dipegang. Ukuran 9x2x2 cm.",
+        badge: "🧈 Super Lembut"
+      },
+      {
+        id: "SQ006",
+        name: "Butter Crunchy",
+        category: "Butter",
+        price: 20000,
+        stock: 15,
+        image: "https://lh3.googleusercontent.com/d/1psaNkDGQhThXy-ao3Gc5Sn1jmhVhwh-E",
+        desc: "Squishy berbentuk butter dengan tekstur kriukkk super satisfying pereda penat. Ukuran 9x2x2 cm.",
+        badge: "🎉 Crunchy"
       }
-    })();
+    ];
+
+    let cart = [];
+    let currentCategory = 'Semua';
+    let searchQuery = '';
+    let squishClicks = 0;
+
+    // Helper Format Rupiah
+    function formatRupiah(num) {
+      return 'Rp ' + Number(num).toLocaleString('id-ID');
+    }
+
+    // Convert Drive Link to Direct CDN
+    function cleanDriveUrl(url) {
+      if (!url) return '';
+      const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+      if (match && match[1]) {
+        return `https://lh3.googleusercontent.com/d/${match[1]}`;
+      }
+      return url;
+    }
+
+    // Live Sync with Google Sheets in Background
+    async function syncWithGoogleSheets() {
+      const sheetCsvUrl = 'https://docs.google.com/spreadsheets/d/1M8Jd3FOhqGRWU-j25YO74ZZQIOtt1-TG_b4LxzF4L8k/export?format=csv&t=' + Date.now();
+      try {
+        const res = await fetch(sheetCsvUrl);
+        const text = await res.text();
+        const rows = parseCSV(text);
+        if (rows.length > 1) {
+          const freshProducts = [];
+          for (let i = 1; i < rows.length; i++) {
+            const r = rows[i];
+            if (!r[0] && !r[1]) continue;
+            const id = r[0] || 'SQ' + i;
+            const name = r[1] || 'Squishy';
+            let cat = r[2] || '';
+            if (!cat) {
+              if (name.toLowerCase().includes('marshmallow')) cat = 'Marshmallow';
+              else if (name.toLowerCase().includes('coconut')) cat = 'Coconut Oil';
+              else if (name.toLowerCase().includes('butter')) cat = 'Butter';
+              else cat = 'Umum';
+            }
+            const price = Number(String(r[3]).replace(/\D/g, '')) || 25000;
+            const stock = Number(String(r[4]).replace(/\D/g, '')) || 20;
+            const rawImg = r[5] || '';
+            const desc = r[6] || 'Squishy berkualitas premium, empuk dan slow rising.';
+            
+            freshProducts.push({
+              id,
+              name,
+              category: cat,
+              price,
+              stock,
+              image: cleanDriveUrl(rawImg) || products[i - 1]?.image || '',
+              desc,
+              badge: i % 2 === 0 ? '🔥 Populer' : '✨ Rekomendasi'
+            });
+          }
+          if (freshProducts.length > 0) {
+            products = freshProducts;
+            renderShowcase();
+            renderCatalog();
+          }
+        }
+      } catch (e) {
+        console.log('Using offline initial catalog:', e);
+      }
+    }
+
+    // Simple CSV Parser
+    function parseCSV(text) {
+      const lines = text.split('\n');
+      return lines.map(line => {
+        const result = [];
+        let cur = '';
+        let inQuotes = false;
+        for (let i = 0; i < line.length; i++) {
+          const c = line[i];
+          if (c === '"') { inQuotes = !inQuotes; }
+          else if (c === ',' && !inQuotes) { result.push(cur.trim()); cur = ''; }
+          else { cur += c; }
+        }
+        result.push(cur.trim());
+        return result;
+      });
+    }
+
+    /* ========================================================
+       RENDER FEATURED SHOWCASE (SWIPEABLE CAROUSEL)
+       ======================================================== */
+    function renderShowcase() {
+      const carousel = document.getElementById('featuredCarousel');
+      const dotsContainer = document.getElementById('carouselDots');
+      
+      carousel.innerHTML = products.map((item, idx) => `
+        <div class="swipe-card" onclick="openProductModal('${item.id}')">
+          <div class="swipe-badge">${item.badge}</div>
+          <div class="swipe-img-box">
+            <img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.src='hero.jpg'">
+          </div>
+          <div class="swipe-content">
+            <span class="item-cat">${item.category}</span>
+            <div class="item-name">${item.name}</div>
+            <div class="item-desc">${item.desc}</div>
+            <div class="item-bottom">
+              <span class="item-price">${formatRupiah(item.price)}</span>
+              <button class="quick-add-btn" onclick="event.stopPropagation(); addToCart('${item.id}', 1)">
+                + Keranjang
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      // Render Dots
+      dotsContainer.innerHTML = products.map((_, i) => `
+        <div class="swipe-dot ${i === 0 ? 'active' : ''}" onclick="scrollToCardIndex(${i})"></div>
+      `).join('');
+    }
+
+    function scrollCarousel(direction) {
+      const carousel = document.getElementById('featuredCarousel');
+      const scrollAmount = 330 * direction;
+      carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+
+    function scrollToCardIndex(index) {
+      const carousel = document.getElementById('featuredCarousel');
+      const cards = carousel.querySelectorAll('.swipe-card');
+      if (cards[index]) {
+        cards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+      }
+    }
+
+    // Update active dot on scroll
+    document.getElementById('featuredCarousel').addEventListener('scroll', () => {
+      const carousel = document.getElementById('featuredCarousel');
+      const index = Math.round(carousel.scrollLeft / 330);
+      const dots = document.querySelectorAll('.swipe-dot');
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    });
+
+    /* ========================================================
+       RENDER CATALOG GRID
+       ======================================================== */
+    function renderCatalog() {
+      const grid = document.getElementById('catalogGrid');
+      const filtered = products.filter(item => {
+        const matchCat = (currentCategory === 'Semua' || item.category === currentCategory);
+        const matchSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                            item.desc.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchCat && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1/-1; text-align:center; padding:50px 20px; color:var(--ink-muted);">
+            <div style="font-size:50px; margin-bottom:10px;">🔍</div>
+            <h3>Squishy tidak ditemukan</h3>
+            <p>Coba gunakan kata kunci pencarian yang lain.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => `
+        <div class="grid-card">
+          <div class="grid-img-wrap" onclick="openProductModal('${item.id}')">
+            <span class="stock-badge ${item.stock <= 15 ? 'low' : ''}">Stok: ${item.stock}</span>
+            <img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.src='hero.jpg'">
+          </div>
+          <div class="grid-card-body">
+            <span class="item-cat">${item.category}</span>
+            <h3 onclick="openProductModal('${item.id}')">${item.name}</h3>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto; padding-top:10px;">
+              <span class="item-price">${formatRupiah(item.price)}</span>
+              <button class="quick-add-btn" onclick="addToCart('${item.id}', 1)">
+                🛒 Tambah
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterCategory(cat, el) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-pill').forEach(btn => btn.classList.remove('active'));
+      if (el) el.classList.add('active');
+      renderCatalog();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val.trim();
+      renderCatalog();
+    }
+
+    /* ========================================================
+       SQUISHY TOY EASTER EGG
+       ======================================================== */
+    function squishAction() {
+      squishClicks++;
+      document.getElementById('squishCount').textContent = squishClicks;
+      const toy = document.getElementById('squishToy');
+      toy.classList.add('squished');
+      
+      const emojis = ['🧸', '🍑', '🍓', '✨', '💖', '🧈', '🍼'];
+      toy.textContent = emojis[squishClicks % emojis.length];
+
+      showToast(`Pencetan ke-${squishClicks}! Satisfying banget kan? 🥰`);
+      setTimeout(() => {
+        toy.classList.remove('squished');
+      }, 200);
+    }
+
+    /* ========================================================
+       PRODUCT MODAL
+       ======================================================== */
+    function openProductModal(id) {
+      const item = products.find(p => p.id === id);
+      if (!item) return;
+
+      const content = document.getElementById('modalProductContent');
+      content.innerHTML = `
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div style="width:100%; height:260px; border-radius:20px; overflow:hidden; background:#fff2f6; display:flex; align-items:center; justify-content:center;">
+            <img src="${item.image}" alt="${item.name}" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <div>
+            <span class="item-cat">${item.category}</span>
+            <h2 style="font-size:24px; color:#201a33; margin:4px 0;">${item.name}</h2>
+            <div style="font-size:24px; font-weight:800; color:var(--pink-dark); margin-bottom:10px;">${formatRupiah(item.price)}</div>
+            <p style="font-size:14px; color:var(--ink-muted); line-height:1.6;">${item.desc}</p>
+          </div>
+          <div style="background:#fdf5f9; padding:12px 16px; border-radius:14px; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:13px; font-weight:700;">Status Ketersediaan:</span>
+            <span style="font-size:13px; font-weight:800; color:#10b981;">✅ Tersedia (${item.stock} pcs)</span>
+          </div>
+          <div style="display:flex; gap:12px; margin-top:8px;">
+            <button class="btn-main" style="flex:1; justify-content:center;" onclick="addToCart('${item.id}', 1); closeProductModal();">
+              🛒 Masukkan Keranjang
+            </button>
+            <a href="https://wa.me/6287780327452?text=Halo%20Admin%20Squishtopia!%20Saya%20tertarik%20dengan%20${encodeURIComponent(item.name)}%20(${formatRupiah(item.price)}),%20apakah%20masih%20tersedia?" 
+               target="_blank" 
+               class="btn-sec" 
+               style="justify-content:center;">
+              📲 Beli via WA
+            </a>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('productModal').classList.add('active');
+    }
+
+    function closeProductModal() {
+      document.getElementById('productModal').classList.remove('active');
+    }
+
+    /* ========================================================
+       CART & CHECKOUT LOGIC
+       ======================================================== */
+    function addToCart(id, qty = 1) {
+      const item = products.find(p => p.id === id);
+      if (!item) return;
+
+      const existing = cart.find(c => c.id === id);
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        cart.push({ id, qty });
+      }
+
+      updateCartBadge();
+      showToast(`🛒 ${item.name} berhasil ditambahkan!`);
+      
+      // GA Event
+      if (typeof gtag === 'function') {
+        gtag('event', 'add_to_cart', {
+          item_id: item.id,
+          item_name: item.name,
+          price: item.price,
+          quantity: qty
+        });
+      }
+    }
+
+    function updateCartBadge() {
+      const count = cart.reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById('cartCount').textContent = count;
+    }
+
+    function openCart() {
+      renderCartDrawer();
+      document.getElementById('drawerOverlay').classList.add('active');
+      document.getElementById('cartDrawer').classList.add('active');
+    }
+
+    function closeCart() {
+      document.getElementById('drawerOverlay').classList.remove('active');
+      document.getElementById('cartDrawer').classList.remove('active');
+    }
+
+    function renderCartDrawer() {
+      const list = document.getElementById('cartItemsList');
+      if (cart.length === 0) {
+        list.innerHTML = `
+          <div style="text-align:center; padding:60px 0; color:var(--ink-muted);">
+            <div style="font-size:54px; margin-bottom:12px;">🧺</div>
+            <h4>Keranjang masih kosong</h4>
+            <p style="font-size:13px; margin-top:4px;">Yuk cari squishy lucu kesukaanmu!</p>
+          </div>
+        `;
+        document.getElementById('cartTotalText').textContent = 'Rp 0';
+        return;
+      }
+
+      let subtotal = 0;
+      list.innerHTML = cart.map(c => {
+        const p = products.find(x => x.id === c.id);
+        if (!p) return '';
+        const itemTotal = p.price * c.qty;
+        subtotal += itemTotal;
+        return `
+          <div class="cart-item">
+            <img src="${p.image}" class="cart-item-img" onerror="this.src='hero.jpg'">
+            <div class="cart-item-info">
+              <div class="cart-item-name">${p.name}</div>
+              <div class="cart-item-price">${formatRupiah(p.price)}</div>
+              <div class="cart-qty-ctrl" style="margin-top:6px;">
+                <button onclick="changeCartQty('${p.id}', -1)">−</button>
+                <b style="font-size:13px; padding:0 4px;">${c.qty}</b>
+                <button onclick="changeCartQty('${p.id}', 1)">+</button>
+              </div>
+            </div>
+            <button onclick="removeCartItem('${p.id}')" style="background:none; color:#ef4444; font-size:16px;">🗑️</button>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('cartTotalText').textContent = formatRupiah(subtotal);
+    }
+
+    function changeCartQty(id, delta) {
+      const item = cart.find(c => c.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart = cart.filter(c => c.id !== id);
+      }
+      updateCartBadge();
+      renderCartDrawer();
+    }
+
+    function removeCartItem(id) {
+      cart = cart.filter(c => c.id !== id);
+      updateCartBadge();
+      renderCartDrawer();
+    }
+
+    /* Checkout Modal */
+    function openCheckoutModal() {
+      if (cart.length === 0) {
+        showToast('Pilih produk squishy dulu ya!');
+        return;
+      }
+      closeCart();
+
+      const subtotal = cart.reduce((sum, c) => {
+        const p = products.find(x => x.id === c.id);
+        return sum + (p ? p.price * c.qty : 0);
+      }, 0);
+
+      const ongkir = subtotal >= 150000 ? 0 : 12000;
+      const total = subtotal + ongkir;
+
+      document.getElementById('coSubtotal').textContent = formatRupiah(subtotal);
+      document.getElementById('coOngkir').textContent = ongkir === 0 ? 'GRATIS (Promo)' : formatRupiah(ongkir);
+      document.getElementById('coGrandTotal').textContent = formatRupiah(total);
+
+      document.getElementById('checkoutModal').classList.add('active');
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkoutModal').classList.remove('active');
+    }
+
+    function handleCheckoutSubmit(e) {
+      e.preventDefault();
+      const nama = document.getElementById('coNama').value.trim();
+      const hp = document.getElementById('coHp').value.trim();
+      const alamat = document.getElementById('coAlamat').value.trim();
+      const payment = document.getElementById('coPayment').value;
+
+      let subtotal = 0;
+      let orderItemsText = "";
+      cart.forEach((c, idx) => {
+        const p = products.find(x => x.id === c.id);
+        if (p) {
+          const itemTotal = p.price * c.qty;
+          subtotal += itemTotal;
+          orderItemsText += `${idx + 1}. ${p.name} (${c.qty} pcs) = ${formatRupiah(itemTotal)}\n`;
+        }
+      });
+
+      const ongkir = subtotal >= 150000 ? 0 : 12000;
+      const total = subtotal + ongkir;
+      const noOrder = "SQ-" + Math.floor(100000 + Math.random() * 900000);
+
+      const pesanWA = 
+`Halo Admin Squishtopia! 🧸✨
+Saya mau order squishy dengan rincian berikut:
+
+🛒 *NO. ORDER: ${noOrder}*
+------------------------------
+${orderItemsText}------------------------------
+*Subtotal:* ${formatRupiah(subtotal)}
+*Ongkir:* ${ongkir === 0 ? 'GRATIS' : formatRupiah(ongkir)}
+*Total Pembayaran:* ${formatRupiah(total)}
+
+📦 *DATA PENGIRIMAN:*
+- *Nama:* ${nama}
+- *No. WA:* ${hp}
+- *Alamat:* ${alamat}
+- *Metode Bayar:* ${payment}
+
+Mohon konfirmasi pesanan dan instruksi pembayarannya ya min. Terima kasih! 🙏`;
+
+      // Clear Cart
+      cart = [];
+      updateCartBadge();
+      closeCheckoutModal();
+
+      // Open WhatsApp
+      const waUrl = `https://wa.me/6287780327452?text=${encodeURIComponent(pesanWA)}`;
+      window.open(waUrl, '_blank');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => { toast.classList.remove('show'); }, 2600);
+    }
+
+    // Initialize App
+    renderShowcase();
+    renderCatalog();
+    syncWithGoogleSheets();
   </script>
 </body>
 </html>
